@@ -25,17 +25,11 @@ func (b baseRepository) Create(ctx context.Context, base *domain.Base) (*domain.
 }
 
 func (b baseRepository) Update(ctx context.Context, base *domain.Base) error {
-	if err := b.db.WithContext(ctx).Save(&base).Error; err != nil {
-		return err
-	}
-	return nil
+	return b.db.WithContext(ctx).Save(&base).Error
 }
 
 func (b baseRepository) Delete(ctx context.Context, id uint) error {
-	if err := b.db.WithContext(ctx).Delete(&domain.Base{}, id).Error; err != nil {
-		return err
-	}
-	return nil
+	return b.db.WithContext(ctx).Delete(&domain.Base{}, id).Error
 }
 
 func (b baseRepository) FindByID(ctx context.Context, id uint) (*domain.Base, error) {
