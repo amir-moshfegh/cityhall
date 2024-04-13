@@ -55,7 +55,6 @@ func (bc *BaseController) Update(c echo.Context) error {
 		})
 	}
 
-	//TODO:: change validation to ozzo
 	if err := validator.BaseUpdateReq(&req); err != nil {
 		return c.JSON(http.StatusBadRequest, dto.Response{
 			Success: false,
