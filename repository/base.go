@@ -25,8 +25,10 @@ func (b baseRepository) Create(ctx context.Context, base *domain.Base) (*domain.
 }
 
 func (b baseRepository) Update(ctx context.Context, base *domain.Base) error {
-	//TODO implement me
-	panic("implement me")
+	if err := b.db.WithContext(ctx).Save(&base).Error; err != nil {
+		return err
+	}
+	return nil
 }
 
 func (b baseRepository) Delete(ctx context.Context, id uint) error {

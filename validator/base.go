@@ -5,7 +5,7 @@ import (
 	validation "github.com/go-ozzo/ozzo-validation"
 )
 
-func BaseCreateReq(req *dto.BaseCreateReq) error {
+func BaseCreateReq(req dto.BaseCreateReq) error {
 	return validation.ValidateStruct(&req,
 		validation.Field(&req.Category, validation.Required),
 		validation.Field(&req.Name, validation.Required),
@@ -14,7 +14,7 @@ func BaseCreateReq(req *dto.BaseCreateReq) error {
 	)
 }
 
-func BaseUpdateReq(req *dto.BaseUpdateReq) error {
+func BaseUpdateReq(req dto.BaseUpdateReq) error {
 	return validation.ValidateStruct(&req,
 		validation.Field(&req.ID, validation.Required),
 		validation.Field(&req.Category, validation.Required),

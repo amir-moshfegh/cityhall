@@ -16,8 +16,8 @@ func BaseRoute(app *bootstrap.Application, r *echo.Group, timeOut time.Duration)
 	}
 
 	r.POST("/create", bc.Create)
-	r.PUT("/update", bc.Update)
+	r.PATCH("/update", bc.Update)
 	r.DELETE("/delete/:id", bc.Delete)
 	r.GET("/find/:id", bc.FindByID)
-	r.GET("/find-by-category/:id", bc.FindByCategory)
+	r.GET("/find-by-category/:category", bc.FindByCategory)
 }

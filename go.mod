@@ -3,6 +3,7 @@ module github.com/amir-moshfegh/cityhall
 go 1.22
 
 require (
+	github.com/go-ozzo/ozzo-validation v3.6.0+incompatible
 	github.com/labstack/echo/v4 v4.11.4
 	github.com/spf13/viper v1.18.2
 	gorm.io/driver/postgres v1.5.7
@@ -10,8 +11,9 @@ require (
 )
 
 require (
+	github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2 // indirect
 	github.com/fsnotify/fsnotify v1.7.0 // indirect
-	github.com/go-ozzo/ozzo-validation v3.6.0+incompatible // indirect
+	github.com/golang-jwt/jwt v3.2.2+incompatible // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/jackc/pgpassfile v1.0.0 // indirect
 	github.com/jackc/pgservicefile v0.0.0-20221227161230-091c0ba34f0a // indirect
@@ -41,6 +43,7 @@ require (
 	golang.org/x/net v0.19.0 // indirect
 	golang.org/x/sys v0.15.0 // indirect
 	golang.org/x/text v0.14.0 // indirect
+	golang.org/x/time v0.5.0 // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )

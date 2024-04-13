@@ -23,7 +23,7 @@ func (bc *BaseController) Create(c echo.Context) error {
 		})
 	}
 
-	if err := validator.BaseCreateReq(&base); err != nil {
+	if err := validator.BaseCreateReq(base); err != nil {
 		return c.JSON(http.StatusBadRequest, dto.Response{
 			Success: false,
 			Message: "bad request" + err.Error(),
@@ -50,15 +50,15 @@ func (bc *BaseController) Update(c echo.Context) error {
 	if err := c.Bind(&req); err != nil {
 		return c.JSON(http.StatusBadRequest, dto.Response{
 			Success: false,
-			Message: "bad request" + err.Error(),
+			Message: "bad request : " + err.Error(),
 			Data:    nil,
 		})
 	}
 
-	if err := validator.BaseUpdateReq(&req); err != nil {
+	if err := validator.BaseUpdateReq(req); err != nil {
 		return c.JSON(http.StatusBadRequest, dto.Response{
 			Success: false,
-			Message: "bad request" + err.Error(),
+			Message: "validation error :" + err.Error(),
 			Data:    nil,
 		})
 	}
