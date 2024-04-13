@@ -54,3 +54,17 @@ func (b baseRepository) FindByCategory(ctx context.Context, id uint) ([]domain.B
 	}
 	return bases, nil
 }
+
+func (b baseRepository) FindByName(ctx context.Context, name string, category uint) (bool, error) {
+	var countRec int64
+	var base domain.Base
+	if err := b.db.WithContext(ctx).Model(&base).Debug().Where("name = ? and category = ? ", name, category).Count(&countRec).Error; err != nil {
+		return false, err
+	}
+
+	if countRec > 0 {
+		return true, nil
+	}
+
+	return false, nil
+}

@@ -47,4 +47,5 @@ type BaseUseCase interface {
 	Delete(ctx context.Context, id uint) error
 	FindByID(ctx context.Context, id uint) (*BaseFindByIDRes, error)
 	FindByCategory(ctx context.Context, id uint) ([]BaseFindByCategoryRes, error)
+	FindByName(ctx context.Context, name string, category uint) (bool, error)
 }

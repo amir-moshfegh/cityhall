@@ -30,6 +30,21 @@ func (bc *BaseController) Create(c echo.Context) error {
 			Data:    nil,
 		})
 	}
+
+	if result, err := bc.BaseUseCase.FindByName(c.Request().Context(), base.Name, base.Category); err != nil {
+		return c.JSON(http.StatusInternalServerError, dto.Response{
+			Success: false,
+			Message: "Internal server error: " + err.Error(),
+			Data:    nil,
+		})
+	} else if result {
+		return c.JSON(http.StatusBadRequest, dto.Response{
+			Success: false,
+			Message: "name already exists",
+			Data:    nil,
+		})
+	}
+
 	nb, err := bc.BaseUseCase.Create(c.Request().Context(), &base)
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, dto.Response{

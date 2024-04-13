@@ -19,4 +19,5 @@ type BaseRepository interface {
 	Delete(ctx context.Context, id uint) error
 	FindByID(ctx context.Context, id uint) (*Base, error)
 	FindByCategory(ctx context.Context, id uint) ([]Base, error)
+	FindByName(ctx context.Context, name string, category uint) (bool, error)
 }

@@ -112,3 +112,7 @@ func (b baseUseCase) FindByCategory(ctx context.Context, id uint) ([]dto.BaseFin
 
 	return newBases, nil
 }
+
+func (b baseUseCase) FindByName(ctx context.Context, name string, category uint) (bool, error) {
+	return b.repo.FindByName(ctx, name, category)
+}
