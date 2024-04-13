@@ -2,6 +2,7 @@ package controller
 
 import (
 	"github.com/amir-moshfegh/cityhall/dto"
+	"github.com/amir-moshfegh/cityhall/validator"
 	"github.com/labstack/echo/v4"
 	_ "github.com/labstack/echo/v4"
 	"net/http"
@@ -22,8 +23,7 @@ func (bc *BaseController) Create(c echo.Context) error {
 		})
 	}
 
-	//TODO:: change validation to ozzo
-	if err := c.Validate(&base); err != nil {
+	if err := validator.BaseCreateReq(&base); err != nil {
 		return c.JSON(http.StatusBadRequest, dto.Response{
 			Success: false,
 			Message: "bad request" + err.Error(),
@@ -56,7 +56,7 @@ func (bc *BaseController) Update(c echo.Context) error {
 	}
 
 	//TODO:: change validation to ozzo
-	if err := c.Validate(&req); err != nil {
+	if err := validator.BaseUpdateReq(&req); err != nil {
 		return c.JSON(http.StatusBadRequest, dto.Response{
 			Success: false,
 			Message: "bad request" + err.Error(),
